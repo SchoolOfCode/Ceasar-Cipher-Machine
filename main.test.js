@@ -24,14 +24,21 @@ const wordsAndOutputCapitals = [
 describe("encoder/decoder", () => {
   //Testing for wraps
 
-  // it.each(wordsAndOutputWrap)('should wrap around the alpabet when given %a, set to encode by %b, and return %c',
-  // (input, mode, expected) => {
-
-  //         expect(getEncodedWord(input,mode)).toBe(expected)
-  // }
-  // )
+  it.each(wordsAndOutputWrap)(
+    "should encode or decode %a when given the mode %b",
+    (input, mode, expected) => {
+      expect(getEncodedWord(input, mode)).toBe(expected);
+    }
+  );
 
   //Testing for capitals
+
+  it.each(wordsAndOutputCapitals)(
+    "should encode or decode %a when given the mode %b",
+    (input, mode, expected) => {
+      expect(getEncodedWord(input, mode)).toBe(expected);
+    }
+  );
 
   //Testing normal conditions
 
@@ -41,4 +48,9 @@ describe("encoder/decoder", () => {
       expect(getEncodedWord(input, mode)).toBe(expected);
     }
   );
+
+
+
+
+
 });

@@ -59,7 +59,8 @@ export function getEncodedWord(word, encoding) {
     let wordAsArray = word.split(""); //cats >> [c,a,t,s]
     console.log(wordAsArray); //works
 
-    let encodedWord = wordAsArray.map(function (v, i, array) {
+    let encodedWord = wordAsArray.map(function (value, i, array) {
+        let v = value.toLowerCase();
       const letterIndex = alphabet.findIndex((letter) => letter === v);
       // if letters are y or z, run index up to 25 then restart at 0
       if (letterIndex === 24) {
@@ -77,12 +78,20 @@ export function getEncodedWord(word, encoding) {
     let wordAsArray = word.split(""); //cats >> [c,a,t,s]
     console.log(wordAsArray); //works
 
-    let encodedWord = wordAsArray.map(function (v, i, array) {
+    let encodedWord = wordAsArray.map(function (value, i, array) {
+        let v = value.toLowerCase();
       // go through each letter 'c' find the index of c alp,
       // const letterIndex =  alphabet.findIndex(v => v === v)
       // console.log(letterIndex)
       const letterIndex = alphabet.findIndex((letter) => letter === v);
-      return alphabet[letterIndex - 2];
+      if (letterIndex === 0) {
+        return alphabet[24];
+      } else if (letterIndex === 1) {
+        return alphabet[25];
+      } else {
+        return alphabet[letterIndex - 2];
+      }
+      
     });
 
     console.log(encodedWord);

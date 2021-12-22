@@ -35,7 +35,7 @@
 
 */
 
-getEncodedWord(word, modeAsBoolean){
+export function getEncodedWord(word, modeAsBoolean){
     //Your solution here
 }
 

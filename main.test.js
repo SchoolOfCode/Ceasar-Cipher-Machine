@@ -1,56 +1,51 @@
 import { getEncodedWord } from "./main.js";
 
-//👉 Write your tests below here:
-// const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-
-//dogs >>> fqiu
 const wordsAndOutputNormal = [
   ["dog", true, "fqi"],
   ["racoon", true, "tceqqp"],
+  ["unicorn", true, "wpkeqtp"],
+  ["fqi", false, "dog"],
+  ["tceqqp", false, "racoon"],
   ["wpkeqtp", false, "unicorn"],
 ];
 
 const wordsAndOutputWrap = [
   ["zebra", true, "bgdtc"],
   ["zorse", true, "bqtug"],
-  ["Yak", true, "acm"],
+  ["yak", true, "acm"],
+  ["bgdtc", false, "zebra"],
+  ["bqtug", false, "zorse"],
+  ["acm", false, "yak"],
 ];
 
 const wordsAndOutputCapitals = [
-  ["zebra", true, "bgdtc"],
+  ["PENGUIN", true, "rgpiwkp"],
   ["Dragon", true, "ftciqp"],
+  ["shREW", true, "ujtgy"],
+  ["fQpmGA", false, "donkey"],
+  ["pGyVU", false, "newts"],
+  ["dGCt", false, "bear"],
 ];
 
-describe("encoder/decoder", () => {
-  //Testing for wraps
-
-  it.each(wordsAndOutputWrap)(
-    "should encode or decode %a when given the mode %b",
-    (input, mode, expected) => {
-      expect(getEncodedWord(input, mode)).toBe(expected);
-    }
+describe("Testing getEncodedWord, which passes in a word and a boolean to determine if the function should encode or decode", () => {
+    it.each(wordsAndOutputWrap)(
+        `'%s',when mode is %s should be '%s' and wrap around`,
+        (input, mode, expected) => {
+        expect(getEncodedWord(input, mode)).toBe(expected);
+        }
   );
 
-  //Testing for capitals
-
-  it.each(wordsAndOutputCapitals)(
-    "should encode or decode %a when given the mode %b",
-    (input, mode, expected) => {
-      expect(getEncodedWord(input, mode)).toBe(expected);
-    }
+    it.each(wordsAndOutputCapitals)(
+        `'%s', when mode is %s should be '%s' and ignore the capital letter(s)`,
+        (input, mode, expected) => {
+        expect(getEncodedWord(input, mode)).toBe(expected);
+        }
   );
 
-  //Testing normal conditions
-
-  it.each(wordsAndOutputNormal)(
-    "should encode or decode %a when given the mode %b",
-    (input, mode, expected) => {
-      expect(getEncodedWord(input, mode)).toBe(expected);
-    }
-  );
-
-
-
-
-
+    it.each(wordsAndOutputNormal)(
+        " '%s', when mode is %s should be '%s'",
+        (input, mode, expected) => {
+        expect(getEncodedWord(input, mode)).toBe(expected);
+        }
+    );
 });

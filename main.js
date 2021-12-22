@@ -1,103 +1,43 @@
-/* 
-👉 Write your kata here!
+/*
+----------Ceasar Cipher Machine----------
 
-Encyrptor/Decryptor
+    From wikipedia: 
+    In cryptography, a Caesar cipher, also known as Caesar's cipher, the shift cipher, Caesar's code or Caesar shift, is one of the simplest and most widely known encryption techniques. It is a type of substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet. For example, with a left shift of 3, D would be replaced by A, E would become B, and so on. The method is named after Julius Caesar, who used it in his private correspondence.
 
-a- +2 - c
-b- d
-c -e 
+    Make a Ceasar Cipher encrypter that takes in a word and right shifts each letter by 2:
+            A >> C
+            D >> F
+            E >> G
+            Q >> S
+            dog >> fqi
+            unicorn >> wpkeqtp
+            shrew >> ujtgy
 
-z- b
+    The function should take in a string as the first parameter and a second boolean "mode" parameter
+    When mode is true, encrypt the word
+    When mode is false decrypt the word by left shifting by two:
+            fqi >> dog
+            wpkeqtp >> unicorn
+            ujtgy >> shrew
+
+    Sometimes, shifting by 2 is not possible (right shifting y and z and left shfiting a and b), so the function should wrap around the alphabet:
+            y >> a
+            z >> b
+            a << y
+            b << z
+
+
+    The output should always be in lowercase, ignoring capilisation in the input.
+    The input will never have spaces, numbers or non a-z characters.
+
+
+    Have fun :D 
+
 */
 
-// alp = [ ]
-
-// indexOfLetter = alp.findIndex("e")
-
-// LetterPlusTwoInTheAlphabet = alp[indexOfLetter+2]
-
-// const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-
-//Given a word, return the world encoded in the ceasar cypher(each letter is +2 of its position in the alpabet)
-// dogs >>> fqiu
-
-//Handle edge cases y,z and numbers, spaces
-
-//👉 Write the function your CodeWarriors will start with below here:
-
-const alphabet = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
-// normal function
-export function getEncodedWord(word, encoding) {
-  if (encoding) {
-    let wordAsArray = word.split(""); //cats >> [c,a,t,s]
-    console.log(wordAsArray); //works
-
-    let encodedWord = wordAsArray.map(function (value, i, array) {
-        let v = value.toLowerCase();
-      const letterIndex = alphabet.findIndex((letter) => letter === v);
-      // if letters are y or z, run index up to 25 then restart at 0
-      if (letterIndex === 24) {
-        return alphabet[0];
-      } else if (letterIndex === 25) {
-        return alphabet[1];
-      } else {
-        return alphabet[letterIndex + 2];
-      }
-    });
-
-    console.log(encodedWord);
-    return encodedWord.join("");
-  } else {
-    let wordAsArray = word.split(""); //cats >> [c,a,t,s]
-    console.log(wordAsArray); //works
-
-    let encodedWord = wordAsArray.map(function (value, i, array) {
-        let v = value.toLowerCase();
-      // go through each letter 'c' find the index of c alp,
-      // const letterIndex =  alphabet.findIndex(v => v === v)
-      // console.log(letterIndex)
-      const letterIndex = alphabet.findIndex((letter) => letter === v);
-      if (letterIndex === 0) {
-        return alphabet[24];
-      } else if (letterIndex === 1) {
-        return alphabet[25];
-      } else {
-        return alphabet[letterIndex - 2];
-      }
-      
-    });
-
-    console.log(encodedWord);
-    return encodedWord.join("");
-  }
+getEncodedWord(word, modeAsBoolean){
+    //Your solution here
 }
 
-getEncodedWord("dog", true);
+//console.log(getEncodedWord("dave",true))
 
